@@ -19,7 +19,7 @@ app.post('/login', async (c) => {
     return c.json({ status: 'ok' })
 })
 
-app.post('/insert', async (c) => {
+app.post('/agrega_todo', async (c) => {
     let body
     try {
         body = await c.req.json()
