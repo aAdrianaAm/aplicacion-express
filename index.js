@@ -42,6 +42,23 @@ app.post('/agrega_todo', async (c) => {
     }
 })
 
+// a) Endpoint para devolver la lista de tareas en JSON
+app.get('/lista_todos', (c) => {
+    try {
+        const todos = db.query("SELECT * FROM todos").all();
+        return c.json(todos, 200);
+    } catch (err) {
+        return c.json({ error: err.message }, 500);
+    }
+});
+
+export { app, db }
+
+export default {
+    port: process.env.PORT || 3000,
+    fetch: app.fetch,
+}
+
 export { app, db }
 
 export default {
